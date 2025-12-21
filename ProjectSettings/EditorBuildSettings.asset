@@ -9,5 +9,6 @@ EditorBuildSettings:
     path: Assets/UnityTechnologies/RollABall/Roll-a-ball.unity
     guid: f5ecd2294d620416d9c805bada1641f3
   m_configObjects:
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    com.unity.input.settings: {fileID: 11400000, guid: a7b368b5d50d908489f272c2044142ff, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: b8187ab17ab9ee440b3c334f7a060c88, type: 3}
   m_UseUCBPForAssetBundles: 0
