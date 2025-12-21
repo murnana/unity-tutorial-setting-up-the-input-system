@@ -57,6 +57,14 @@
 - **移動:** WASD キーまたは方向キー
 - **目標:** 12個のアイテムをすべて収集すると勝利
 
+## オンラインでプレイ
+
+このゲームは Unity Play で公開されており、ブラウザから直接プレイできます：
+
+https://play.unity.com/en/games/6ecfeebd-ced4-459c-ac34-d9e83ada7c8e/tutorial-input-system
+
+Unity エディタをインストールせずに、ゲームの動作を確認できます。
+
 ## プロジェクト構成
 
 ```
