@@ -1,15 +1,21 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DriftCamera : MonoBehaviour
 {
     [Serializable]
     public class AdvancedOptions
     {
-        public bool updateCameraInUpdate;
-        public bool updateCameraInFixedUpdate = true;
-        public bool updateCameraInLateUpdate;
-        public KeyCode switchViewKey = KeyCode.Space;
+        public                   bool             updateCameraInUpdate;
+        public                   bool             updateCameraInFixedUpdate = true;
+        public                   bool             updateCameraInLateUpdate;
+        [SerializeField] private InputActionAsset inputActionAsset;
+
+        public InputActionAsset InputActionAsset
+        {
+            get { return inputActionAsset; }
+        }
     }
 
     public float smoothing = 6f;
@@ -17,8 +23,20 @@ public class DriftCamera : MonoBehaviour
     public Transform positionTarget;
     public Transform sideView;
     public AdvancedOptions advancedOptions;
+    
+    private InputActionMap inputActionMap;
+    private InputAction    inputSwitchViewAction;
 
     bool m_ShowingSideView;
+
+    private void Start()
+    {
+        inputActionMap = advancedOptions.InputActionAsset.FindActionMap("Gameplay");
+
+        inputSwitchViewAction = inputActionMap.FindAction("Switch View");
+
+        inputSwitchViewAction.started += OnSwitchView;
+    }
 
     private void FixedUpdate ()
     {
@@ -28,9 +46,6 @@ public class DriftCamera : MonoBehaviour
 
     private void Update ()
     {
-        if (Input.GetKeyDown (advancedOptions.switchViewKey))
-            m_ShowingSideView = !m_ShowingSideView;
-
         if(advancedOptions.updateCameraInUpdate)
             UpdateCamera ();
     }
@@ -53,5 +68,10 @@ public class DriftCamera : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, positionTarget.position, Time.deltaTime * smoothing);
             transform.LookAt(lookAtTarget);
         }
+    }
+
+    private void OnSwitchView(InputAction.CallbackContext context)
+    {
+        m_ShowingSideView = !m_ShowingSideView;
     }
 }

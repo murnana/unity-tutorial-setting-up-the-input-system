@@ -2,7 +2,6 @@
 
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System.Collections.Generic;
 using System;
 
@@ -43,7 +42,6 @@ public class GraphOverlay : MonoBehaviour
 	int m_WidthPixels;
 	int m_HeightPixels;
 
-    const string k_EventSystemName = "EventSystem";
     const string k_GraphCanvasName = "GraphCanvas";
     const string k_GraphImageName = "RawImage";
     const string k_InfoTextName = "InfoText";
@@ -54,10 +52,6 @@ public class GraphOverlay : MonoBehaviour
 	void Start()
 	{
 		// Add GUI infrastructure.
-        var eventSystem = new GameObject(k_EventSystemName);	
-		eventSystem.AddComponent<EventSystem>();
-		eventSystem.AddComponent<StandaloneInputModule>();
-
         var canvas = new GameObject(k_GraphCanvasName);
 		var canvasScript = canvas.AddComponent<Canvas>();
 		canvas.AddComponent<CanvasScaler>();

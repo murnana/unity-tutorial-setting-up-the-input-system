@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TestTrack.unity
     guid: 39dd73fe576aa7f46b6735a5fa664b0e
   m_configObjects:
-    com.unity.input.settings: {fileID: 11400000, guid: a7b368b5d50d908489f272c2044142ff, type: 2}
-    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: b8187ab17ab9ee440b3c334f7a060c88, type: 3}
+    com.unity.input.settings: {fileID: 11400000, guid: 91656daaaa52c1c48882f7c6d7728ade, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: a4822ed04f48dbf4ca1a73fa79d0a901, type: 3}
   m_UseUCBPForAssetBundles: 0
