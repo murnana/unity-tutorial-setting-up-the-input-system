@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/UnityTechnologies/RollABall/Roll-a-ball.unity
-    guid: f5ecd2294d620416d9c805bada1641f3
+    path: Assets/Scenes/TestTrack.unity
+    guid: 39dd73fe576aa7f46b6735a5fa664b0e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a7b368b5d50d908489f272c2044142ff, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: b8187ab17ab9ee440b3c334f7a060c88, type: 3}
