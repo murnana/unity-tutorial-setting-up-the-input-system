@@ -38,25 +38,39 @@ public class WheelDrive : MonoBehaviour
     [SerializeField] private InputActionAsset primaryActions;
     private InputActionMap gameplayActionsMap;
     private InputAction handBrakeInputAction;
+    private InputAction steeringAngleInputAction;
+    private InputAction accelerationInputAction;
 
     private void Awake()
     {
         gameplayActionsMap = primaryActions.FindActionMap("Gameplay");
 
-        handBrakeInputAction = gameplayActionsMap.FindAction("Handbrake");
+        handBrakeInputAction     = gameplayActionsMap.FindAction("Handbrake");
+        steeringAngleInputAction = gameplayActionsMap.FindAction("Steering Angle");
+        accelerationInputAction  = gameplayActionsMap.FindAction("Acceleration");
 
         handBrakeInputAction.performed += GetHandBrakeInput;
         handBrakeInputAction.canceled  += GetHandBrakeInput;
+
+        steeringAngleInputAction.performed += GetAngleInput;
+        steeringAngleInputAction.canceled  += GetAngleInput;
+
+        accelerationInputAction.performed += GetTorqueInput;
+        accelerationInputAction.canceled  += GetTorqueInput;
     }
 
     private void OnEnable()
     {
         handBrakeInputAction.Enable();
+        steeringAngleInputAction.Enable();
+        accelerationInputAction.Enable();
     }
 
     private void OnDisable()
     {
         handBrakeInputAction.Disable();
+        steeringAngleInputAction.Disable();
+        accelerationInputAction.Disable();
     }
 
     // Find all the WheelColliders down in the hierarchy.
@@ -83,9 +97,6 @@ public class WheelDrive : MonoBehaviour
     void Update()
     {
         m_Wheels[0].ConfigureVehicleSubsteps(criticalSpeed, stepsBelow, stepsAbove);
-
-        angle = maxAngle * Input.GetAxis("Horizontal");
-        torque = maxTorque * Input.GetAxis("Vertical");
 
 
         foreach (WheelCollider wheel in m_Wheels)
@@ -136,5 +147,15 @@ public class WheelDrive : MonoBehaviour
     private void GetHandBrakeInput(InputAction.CallbackContext context)
     {
         handBrake = context.ReadValue<float>() * brakeTorque;
+    }
+
+    private void GetAngleInput(InputAction.CallbackContext context)
+    {
+        angle = context.ReadValue<float>() * maxAngle;
+    }
+
+    private void GetTorqueInput(InputAction.CallbackContext context)
+    {
+        torque = context.ReadValue<float>() * maxTorque;
     }
 }

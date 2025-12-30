@@ -8,17 +8,18 @@
 
 ### 現在の状態
 
-- **プロジェクト状態**: Challenge 2 完了
+- **プロジェクト状態**: Challenge 3 完了
 - **Input System パッケージ**: v1.17.0 インストール済み
 - **学習目標**: Input System を使った実践的な車両制御の実装
 
 ### Unity Learn Challenge について
 
-- **完了済み**: Challenge 1 & Challenge 2
+- **完了済み**: Challenge 1 & Challenge 2 & Challenge 3
 - **コース**: Using the Input System in Unity
 - **難易度**: 初心者向け (Beginner)
 - **Challenge 1 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
 - **Challenge 2 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-2-configure-the-wheel-drive-component-s-handbrake-input
+- **Challenge 3 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-3-configure-the-wheel-drive-component-s-acceleration-and-steering-angle-inputs
 - **コース全体URL**: https://learn.unity.com/course/using-the-input-system-in-unity
 
 ## セットアップ手順
@@ -76,6 +77,23 @@
 - `GetHandBrakeInput()` メソッドの実装
 - 各車両プレハブへの Input Actions 割り当て
 
+### Challenge 3: Configure the Wheel Drive Component's Acceleration and Steering Angle Inputs
+
+**学習内容:**
+- 複数の 1D Axis Input の設定と管理
+- Composite Binding（1D Axis）の使用
+- 車両の加速・減速制御の実装
+- ステアリング制御の実装
+- イベントベースの入力処理（performed/canceled）
+
+**実装内容:**
+- Acceleration アクションの追加（W/S キーにバインド）
+- Steering Angle アクションの追加（A/D キーにバインド）
+- `GetTorqueInput()` メソッドの実装（加速制御）
+- `GetAngleInput()` メソッドの実装（ステアリング制御）
+- 既存の `Input.GetAxis()` コードの削除
+- イベント登録の拡張（performed/canceled コールバック）
+
 ## プロジェクト構成
 
 ```
@@ -125,9 +143,15 @@ ProjectSettings/
   - ✅ WheelDrive.cs への Input System 統合
   - ✅ Input ライフサイクル管理の実装
   - ✅ 各車両への Input Actions 割り当て
+- ✅ Challenge 3: Configure the Wheel Drive Component's Acceleration and Steering Angle Inputs
+  - ✅ Acceleration アクションの追加（1D Axis Composite Binding）
+  - ✅ Steering Angle アクションの追加（1D Axis Composite Binding）
+  - ✅ イベントベース入力処理の実装
+  - ✅ レガシー Input.GetAxis() コードの削除
+  - ✅ 車両の加速・ステアリング制御の動作確認
 
 ### 次のステップ
-- ⬜ Challenge 3 以降のコースに進む
+- ⬜ Challenge 4 以降のコースに進む
 
 ## ライセンス
 
