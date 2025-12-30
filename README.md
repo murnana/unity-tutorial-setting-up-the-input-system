@@ -8,18 +8,19 @@
 
 ### 現在の状態
 
-- **プロジェクト状態**: Challenge 3 完了
+- **プロジェクト状態**: Challenge 4 (パート 1) 完了
 - **Input System パッケージ**: v1.17.0 インストール済み
-- **学習目標**: Input System を使った実践的な車両制御の実装
+- **学習目標**: Input System を使った実践的な車両制御の実装（キーボード + ゲームパッド対応）
 
 ### Unity Learn Challenge について
 
-- **完了済み**: Challenge 1 & Challenge 2 & Challenge 3
+- **完了済み**: Challenge 1 & Challenge 2 & Challenge 3 & Challenge 4 (パート 1)
 - **コース**: Using the Input System in Unity
 - **難易度**: 初心者向け (Beginner)
 - **Challenge 1 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
 - **Challenge 2 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-2-configure-the-wheel-drive-component-s-handbrake-input
 - **Challenge 3 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-3-configure-the-wheel-drive-component-s-acceleration-and-steering-angle-inputs
+- **Challenge 4 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-4-setting-up-a-second-set-of-bindings-for-a-gamepad
 - **コース全体URL**: https://learn.unity.com/course/using-the-input-system-in-unity
 
 ## セットアップ手順
@@ -94,6 +95,25 @@
 - 既存の `Input.GetAxis()` コードの削除
 - イベント登録の拡張（performed/canceled コールバック）
 
+### Challenge 4 (パート 1): Setting up a Second set of Bindings for a Gamepad
+
+**学習内容:**
+- ゲームパッドコントローラーの代替入力バインディング設定
+- マルチデバイス入力サポート（キーボード + ゲームパッド）
+- Input Debugger を使用したリアルタイム入力モニタリング
+- Processor（Invert）を使った入力値の変換
+
+**実装内容:**
+- Next Vehicle アクションへのゲームパッドバインディング追加（Y ボタン）
+- Reset アクションへのゲームパッドバインディング追加（Select ボタン）
+- Handbrake アクションへのゲームパッドバインディング追加（A ボタン）
+- Acceleration アクションへのゲームパッドバインディング追加:
+  - Right Trigger（正の加速）
+  - Left Trigger + Invert Processor（負の加速/減速）
+- Steering Angle アクションへのゲームパッドバインディング追加（Left Stick X軸）
+- コード変更なしでマルチデバイス対応を実現
+- Input Debugger でのテストと検証
+
 ## プロジェクト構成
 
 ```
@@ -121,8 +141,11 @@ ProjectSettings/
 ## 学習リソース
 
 ### 公式リソース
-- [Unity Learn: Challenge 1 - Setting up the Input System](https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system)
 - [Unity Learn: Using the Input System in Unity（コース全体）](https://learn.unity.com/course/using-the-input-system-in-unity)
+- [Unity Learn: Challenge 1 - Setting up the Input System](https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system)
+- [Unity Learn: Challenge 2 - Configure Handbrake Input](https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-2-configure-the-wheel-drive-component-s-handbrake-input)
+- [Unity Learn: Challenge 3 - Configure Acceleration and Steering](https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-3-configure-the-wheel-drive-component-s-acceleration-and-steering-angle-inputs)
+- [Unity Learn: Challenge 4 - Setting up Gamepad Bindings](https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-4-setting-up-a-second-set-of-bindings-for-a-gamepad)
 - [Unity 公式 Input System ドキュメント](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.17/manual/index.html)
 
 ### 追加リソース
@@ -149,9 +172,14 @@ ProjectSettings/
   - ✅ イベントベース入力処理の実装
   - ✅ レガシー Input.GetAxis() コードの削除
   - ✅ 車両の加速・ステアリング制御の動作確認
+- ✅ Challenge 4 (パート 1): Setting up a Second set of Bindings for a Gamepad
+  - ✅ 全アクションへのゲームパッドバインディング追加
+  - ✅ Invert Processor を使ったトリガー入力の設定
+  - ✅ マルチデバイス入力対応の確認（キーボード + ゲームパッド）
+  - ✅ Input Debugger での動作検証
 
 ### 次のステップ
-- ⬜ Challenge 4 以降のコースに進む
+- ⬜ Challenge 4 の残りパートや他のコースに進む
 
 ## ライセンス
 

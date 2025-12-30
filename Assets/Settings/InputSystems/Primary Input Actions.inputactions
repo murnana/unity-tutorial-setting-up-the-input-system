@@ -66,6 +66,17 @@
                 },
                 {
                     "name": "",
+                    "id": "50c41cba-129e-4245-96d1-f3456bc7c11e",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Next Vehicle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "2a637eb3-6a43-4eab-8ff7-ec745e7de60a",
                     "path": "<Keyboard>/r",
                     "interactions": "",
@@ -77,8 +88,30 @@
                 },
                 {
                     "name": "",
+                    "id": "c8666f57-57ac-4b67-b966-7aefcb1b0152",
+                    "path": "<Gamepad>/select",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reset Vehicle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "980da724-03d3-4a61-8972-eeb490ad5291",
                     "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Handbrake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c55b8b8e-3cfa-47d2-94a6-128f61714fdf",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -120,6 +153,28 @@
                     "isPartOfComposite": true
                 },
                 {
+                    "name": "",
+                    "id": "1af98b9f-4a36-421b-aa76-c5b09b4c1504",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Acceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f9200d6d-a495-4b4d-882b-852138c3dc9d",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "",
+                    "action": "Acceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "1D Axis",
                     "id": "75a8013f-0d9d-4318-9b51-d2c015464b3b",
                     "path": "1DAxis",
@@ -151,6 +206,17 @@
                     "action": "Steering Angle",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "dfb1764b-6817-42a0-bab4-36befdadb201",
+                    "path": "<Gamepad>/leftStick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Steering Angle",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
