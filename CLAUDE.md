@@ -4,30 +4,35 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Unity tutorial project for practicing **Challenge 1: Setting up the Input System** from the Unity Learn course **"Using the Input System in Unity"** (https://learn.unity.com/course/using-the-input-system-in-unity).
+This is a Unity tutorial project for practicing challenges from the Unity Learn course **"Using the Input System in Unity"** (https://learn.unity.com/course/using-the-input-system-in-unity).
 
 **Current State:**
-- **Project Status:** Clean/empty project, reset for Challenge 1
+- **Project Status:** Challenge 2 completed
 - **Input System package:** v1.17.0 installed
-- **Assets:** Only URP default assets (DefaultVolumeProfile, UniversalRenderPipelineGlobalSettings)
-- **Previous Content:** All Roll-a-Ball tutorial assets and sample files have been removed
-- **Goal:** Complete Challenge 1 by setting up Input System and converting a car switcher component
+- **Completed Challenges:** Challenge 1 & Challenge 2
+- **Current Focus:** Ready for Challenge 3 and beyond
 
 **Project Details:**
 - **Unity Version:** 6000.3.2f1 (Unity 6)
 - **Render Pipeline:** Universal Render Pipeline (URP) 17.3.0
-- **Main Scene:** None (will be created as part of Challenge 1)
-- **Unity Learn Challenge:** Challenge 1 - Setting up the Input System
+- **Main Scene:** TestTrack.unity
+- **Completed Unity Learn Challenges:**
+  - Challenge 1: Setting up the Input System
+  - Challenge 2: Configure the Wheel Drive Component's Handbrake Input
 
-**Challenge 1 URL:**
-https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+**Challenge URLs:**
+- Challenge 1: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+- Challenge 2: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-2-configure-the-wheel-drive-component-s-handbrake-input
 
-**Learning Objectives for Challenge 1:**
-1. Setting up the Input System package in a project
-2. Creating Input Actions Assets
-3. Using the PlayerInput component
-4. Converting existing input code to use Input System
-5. Understanding Input System basics
+**Completed Learning Objectives:**
+1. ✅ Setting up the Input System package in a project
+2. ✅ Creating Input Actions Assets
+3. ✅ Using the PlayerInput component
+4. ✅ Converting existing input code to use Input System
+5. ✅ Understanding Input System basics
+6. ✅ Implementing 1D axis input for vehicle control
+7. ✅ Using button and modifier actions in C# scripts
+8. ✅ Managing input lifecycle (OnEnable/OnDisable)
 
 ## Development Commands
 
@@ -37,10 +42,15 @@ https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challeng
 # File → Open Project → Select this directory
 ```
 
-### Working on Challenge 1
-- Follow the Challenge 1 instructions on Unity Learn
-- Create new scenes, scripts, and Input Actions as required
+### Working on Challenges
+- Follow the Challenge instructions on Unity Learn
+- Implement required features using Input System
 - Test your implementation in Play mode
+
+### Testing Controls
+- **Tab Key:** Switch between vehicles (Challenge 1)
+- **X Key:** Handbrake (Challenge 2)
+- Use Window → Analysis → Input Debugger to inspect inputs
 
 ### Building
 No build scripts configured. Use Unity Editor's build menu: File → Build Settings
@@ -51,40 +61,71 @@ No build scripts configured. Use Unity Editor's build menu: File → Build Setti
 Assets/
 ├── DefaultVolumeProfile.asset                      # Default URP volume settings
 ├── UniversalRenderPipelineGlobalSettings.asset     # URP global configuration
-└── (Challenge 1 assets will be added here)
+├── Prefabs/
+│   └── Vehicles/                                   # Vehicle prefabs
+│       ├── FamilyCar.prefab                        # Family car with WheelDrive component
+│       ├── SportsCar.prefab                        # Sports car with WheelDrive component
+│       └── Truck.prefab                            # Truck with WheelDrive component
+├── Scenes/
+│   └── TestTrack.unity                             # Main test track scene
+├── Scripts/
+│   ├── CarSwitcher.cs                              # Vehicle switching script (Challenge 1)
+│   └── WheelDrive.cs                               # Vehicle drive script with Input System (Challenge 2)
+└── Settings/
+    └── InputSystems/
+        └── Primary Input Actions.inputactions      # Main input actions asset
 
 ProjectSettings/
 └── (Unity project configuration files)
 ```
 
-**Note:** The project is currently empty. All assets, scripts, and scenes will be created as part of Challenge 1.
+## Completed Challenges Implementation
 
-## Challenge 1 Implementation Guide
+### Challenge 1: Setting up the Input System
 
-### Expected Deliverables for Challenge 1
-
-Based on the Unity Learn Challenge 1, you should create:
+**Deliverables:**
 
 1. **Input Actions Asset**
-   - Create a `.inputactions` file for the car switcher
-   - Define appropriate Action Maps and Actions
-   - Configure bindings for the required inputs
+   - ✅ Created "Primary Input Actions.inputactions"
+   - ✅ Defined "Player" Action Map
+   - ✅ Created "SwitchCar" action bound to Tab key
 
 2. **Scene Setup**
-   - Create or import the Challenge 1 starter scene
-   - Set up game objects as required by the challenge
+   - ✅ Created TestTrack.unity scene
+   - ✅ Set up vehicle prefabs (FamilyCar, SportsCar, Truck)
 
 3. **Scripts**
-   - Convert the car switcher component to use Input System
-   - Use either PlayerInput component or direct Input Actions API
+   - ✅ Implemented CarSwitcher.cs using PlayerInput component
+   - ✅ Integrated Input System with OnSwitchCar callback
 
 4. **Testing**
-   - Verify input works correctly
-   - Use Input Debugger to validate setup
+   - ✅ Verified Tab key switches between vehicles correctly
+
+### Challenge 2: Configure the Wheel Drive Component's Handbrake Input
+
+**Deliverables:**
+
+1. **Input Actions Update**
+   - ✅ Added "Handbrake" action to Primary Input Actions
+   - ✅ Bound Handbrake to X key
+
+2. **Script Implementation**
+   - ✅ Updated WheelDrive.cs with Input System namespace
+   - ✅ Added InputActionAsset reference field
+   - ✅ Implemented Awake() method to initialize input
+   - ✅ Created GetHandBrakeInput() method
+   - ✅ Added OnEnable()/OnDisable() for lifecycle management
+   - ✅ Removed legacy Input.GetKey() code
+
+3. **Scene Configuration**
+   - ✅ Assigned Primary Input Actions to all vehicle prefabs
+
+4. **Testing**
+   - ✅ Verified X key triggers handbrake on all vehicles
 
 ### Input System Implementation Approaches
 
-**Option A - PlayerInput Component (Recommended for Challenge 1):**
+**Approach A - PlayerInput Component (Used in Challenge 1):**
 ```csharp
 using UnityEngine.InputSystem;
 
@@ -93,33 +134,42 @@ public class CarSwitcher : MonoBehaviour
     public void OnSwitchCar(InputValue value)
     {
         // Handle car switching logic
+        // This approach uses PlayerInput component with Send Messages behavior
     }
 }
 ```
 
-**Option B - Direct Input Actions API:**
+**Approach B - Direct Input Actions API (Used in Challenge 2):**
 ```csharp
 using UnityEngine.InputSystem;
 
-public class CarSwitcher : MonoBehaviour
+public class WheelDrive : MonoBehaviour
 {
     [SerializeField] private InputActionAsset inputActions;
-    private InputAction switchAction;
+    private InputAction handbrakeAction;
 
     void Awake()
     {
-        switchAction = inputActions.FindActionMap("Player").FindAction("SwitchCar");
+        // Find the action in the asset
+        handbrakeAction = inputActions.FindActionMap("Player").FindAction("Handbrake");
     }
 
-    void OnEnable() => switchAction.Enable();
-    void OnDisable() => switchAction.Disable();
-
-    void Update()
+    void OnEnable()
     {
-        if (switchAction.triggered)
-        {
-            // Handle car switching logic
-        }
+        // Enable the action when component is enabled
+        handbrakeAction.Enable();
+    }
+
+    void OnDisable()
+    {
+        // Disable the action when component is disabled
+        handbrakeAction.Disable();
+    }
+
+    float GetHandBrakeInput()
+    {
+        // Read the current value of the action
+        return handbrakeAction.ReadValue<float>();
     }
 }
 ```
@@ -142,24 +192,26 @@ Critical packages in `Packages/manifest.json`:
 
 ## Working with This Project
 
-### When Helping with Challenge 1
+### When Helping with Future Challenges
 
-If asked to help with Challenge 1 implementation:
+If asked to help with future challenge implementation:
 
 1. **Follow the Unity Learn Challenge Instructions:**
-   - Reference the Challenge 1 page for specific requirements
+   - Reference the specific Challenge page for requirements
    - Use terminology from the course (Action Maps, Actions, Bindings, Control Schemes)
-   - Recommend PlayerInput component approach for beginners
+   - Build on existing implementations from previous challenges
 
 2. **Project Setup:**
-   - The project is currently empty (no scenes, scripts, or Input Actions)
-   - Input System package v1.17.0 is already installed
-   - URP is configured and ready to use
+   - Challenge 1 and 2 are complete
+   - Input System package v1.17.0 is installed and configured
+   - Primary Input Actions asset exists with SwitchCar and Handbrake actions
+   - TestTrack scene has 3 vehicles with configured components
 
 3. **Implementation Steps:**
-   - Create Input Actions Asset first
-   - Set up the scene with required GameObjects
-   - Write or convert scripts to use Input System
+   - Review existing Input Actions Asset
+   - Add new actions as required by the challenge
+   - Update or create scripts using Input System API
+   - Configure scene objects and components
    - Test using Input Debugger
 
 4. **Code Style Guidelines:**
@@ -167,32 +219,40 @@ If asked to help with Challenge 1 implementation:
    - Add comments to explain Input System concepts
    - Keep code simple and tutorial-focused
    - Follow Unity's C# coding conventions
+   - Match the style of existing scripts (CarSwitcher.cs, WheelDrive.cs)
 
-### Common Tasks for Challenge 1
+### Common Tasks
 
-**Creating Input Actions Asset:**
-- Right-click in Project window → Create → Input Actions
-- Name it appropriately (e.g., "CarSwitcherInputActions.inputactions")
-- Define Action Maps, Actions, and Bindings as required by the challenge
-- Save the asset and optionally generate a C# class
+**Updating Input Actions Asset:**
+- Open "Primary Input Actions.inputactions" in Assets/Settings/InputSystems/
+- Add new actions to the "Player" Action Map
+- Define bindings for keyboard/gamepad controls
+- Save the asset
 
-**Setting Up PlayerInput Component:**
-- Add PlayerInput component to the appropriate GameObject
-- Assign the Input Actions Asset
-- Set Behavior to "Invoke Unity Events" or "Send Messages"
-- Configure Default Action Map
+**Using PlayerInput Component (Challenge 1 approach):**
+- Add PlayerInput component to GameObject
+- Assign Primary Input Actions asset
+- Set Behavior to "Send Messages"
+- Implement callback methods like `OnActionName(InputValue value)`
 
-**Writing Input System Scripts:**
-- Add `using UnityEngine.InputSystem;` at the top
-- Implement callback methods (e.g., `OnSwitchCar(InputValue value)`)
-- Handle input values appropriately
-- Add beginner-friendly comments
+**Using Direct Input Actions API (Challenge 2 approach):**
+- Add `using UnityEngine.InputSystem;` at the top of script
+- Add `[SerializeField] private InputActionAsset inputActions;` field
+- Find actions in Awake(): `inputActions.FindActionMap("Player").FindAction("ActionName")`
+- Enable/disable in OnEnable()/OnDisable()
+- Read values with `action.ReadValue<T>()`
 
 **Debugging and Testing:**
 - Use Window → Analysis → Input Debugger to inspect inputs
 - Verify bindings are triggering correctly
 - Test with keyboard (and gamepad if available)
 - Check Console for any Input System warnings or errors
+
+**Assigning Input Actions to Prefabs:**
+- Select prefab in Project window
+- Find the component that needs Input Actions (e.g., WheelDrive)
+- Assign the Primary Input Actions asset to the InputActionAsset field
+- Apply changes to prefab
 
 ### Project Settings for Input System
 
@@ -204,13 +264,17 @@ If asked to help with Challenge 1 implementation:
   - "Both" - Supports both systems (useful for gradual migration)
 
 ### Reference Documentation
-- Unity Learn Challenge 1: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
 - Unity Learn Course: https://learn.unity.com/course/using-the-input-system-in-unity
+- Unity Learn Challenge 1: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+- Unity Learn Challenge 2: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-2-configure-the-wheel-drive-component-s-handbrake-input
 - Input System Package Manual: https://docs.unity3d.com/Packages/com.unity.inputsystem@1.17/manual/index.html
 
 ### Notes
 
-- This project has been reset to a clean state for Challenge 1
-- Previous Roll-a-Ball tutorial assets have been removed
-- Focus is on learning Input System fundamentals through the Challenge 1 exercise
-- After completing Challenge 1, you can proceed to Challenge 2 and beyond in the Unity Learn course
+- Challenge 1 and Challenge 2 are completed
+- Project demonstrates two different Input System approaches:
+  - PlayerInput component with callbacks (CarSwitcher)
+  - Direct Input Actions API (WheelDrive)
+- Ready to proceed with Challenge 3 and beyond
+- All vehicle prefabs are configured with Input Actions
+- TestTrack scene is fully set up for vehicle testing

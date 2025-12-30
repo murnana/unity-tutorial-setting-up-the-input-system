@@ -1,23 +1,24 @@
 # Unity チュートリアル: Input System のセットアップ
 
-このプロジェクトは、Unity Learn の公式コース「[Using the Input System in Unity](https://learn.unity.com/course/using-the-input-system-in-unity)」の **Challenge 1: Setting up the Input System** を実践するための学習プロジェクトです。
+このプロジェクトは、Unity Learn の公式コース「[Using the Input System in Unity](https://learn.unity.com/course/using-the-input-system-in-unity)」の課題を実践するための学習プロジェクトです。
 
 ## プロジェクト概要
 
-このプロジェクトは、Unity の新しい Input System パッケージの使い方を学ぶための空のプロジェクトです。Unity Learn の Challenge 1 に従って、Input System のセットアップ方法と基本的な使い方を習得できます。
+このプロジェクトは、Unity の新しい Input System パッケージの使い方を学ぶためのプロジェクトです。Unity Learn の各 Challenge に従って、Input System のセットアップ方法と実践的な使い方を習得できます。
 
 ### 現在の状態
 
-- **プロジェクト状態**: 空のプロジェクト（Challenge 1 用にリセット済み）
+- **プロジェクト状態**: Challenge 2 完了
 - **Input System パッケージ**: v1.17.0 インストール済み
-- **学習目標**: Challenge 1 の課題に取り組み、Input System の基本を理解する
+- **学習目標**: Input System を使った実践的な車両制御の実装
 
 ### Unity Learn Challenge について
 
-- **Challenge 名**: Challenge 1: Setting up the Input System
+- **完了済み**: Challenge 1 & Challenge 2
 - **コース**: Using the Input System in Unity
 - **難易度**: 初心者向け (Beginner)
-- **Challenge URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+- **Challenge 1 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+- **Challenge 2 URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-2-configure-the-wheel-drive-component-s-handbrake-input
 - **コース全体URL**: https://learn.unity.com/course/using-the-input-system-in-unity
 
 ## セットアップ手順
@@ -45,42 +46,59 @@
 - **Visual Scripting** (1.9.9) - ビジュアルスクリプティングツール
 - **Test Framework** (1.6.0) - テストフレームワーク
 
-## Challenge 1 の進め方
+## 実装済みの Challenge
 
-### 学習の流れ
+### Challenge 1: Setting up the Input System
 
-1. **Unity Learn の Challenge 1 ページにアクセス**
-   - URL: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
-
-2. **Challenge の指示に従って実装**
-   - Input System のセットアップ
-   - Input Actions の作成
-   - スクリプトでの使用方法
-
-3. **このプロジェクトで実践**
-   - 空のシーンから開始
-   - Challenge の要件を満たす実装を追加
-
-### 主な学習内容
-
+**学習内容:**
 - Input System パッケージのセットアップ
 - Input Actions Asset の作成と設定
 - PlayerInput コンポーネントの使用
-- Input System Scripting API の基礎
+- 車両切り替え機能の実装
+
+**実装内容:**
+- Primary Input Actions Asset の作成
+- CarSwitcher コンポーネントの実装
+- TestTrack シーンのセットアップ
+- Tab キーによる車両切り替え機能
+
+### Challenge 2: Configure the Wheel Drive Component's Handbrake Input
+
+**学習内容:**
+- 1D Axis Input を使った車両制御
+- Button と Modifier アクションの設定
+- C# スクリプトでの Input System API の使用
+- Input ライフサイクル管理（OnEnable/OnDisable）
+
+**実装内容:**
+- Handbrake アクションの追加（X キーにバインド）
+- WheelDrive.cs への Input System 統合
+- `GetHandBrakeInput()` メソッドの実装
+- 各車両プレハブへの Input Actions 割り当て
 
 ## プロジェクト構成
 
 ```
 Assets/
-├── DefaultVolumeProfile.asset           # デフォルトのボリューム設定
-├── UniversalRenderPipelineGlobalSettings.asset  # URP グローバル設定
-└── (Challenge 1 で作成するアセットがここに追加されます)
+├── DefaultVolumeProfile.asset                      # デフォルトのボリューム設定
+├── UniversalRenderPipelineGlobalSettings.asset     # URP グローバル設定
+├── Prefabs/
+│   └── Vehicles/                                   # 車両プレハブ
+│       ├── FamilyCar.prefab                        # ファミリーカー
+│       ├── SportsCar.prefab                        # スポーツカー
+│       └── Truck.prefab                            # トラック
+├── Scenes/
+│   └── TestTrack.unity                             # テストトラックシーン
+├── Scripts/
+│   ├── CarSwitcher.cs                              # 車両切り替えスクリプト
+│   └── WheelDrive.cs                               # 車両駆動スクリプト
+└── Settings/
+    └── InputSystems/
+        └── Primary Input Actions.inputactions      # 入力アクション定義
 
 ProjectSettings/
 └── (Unity プロジェクト設定ファイル群)
 ```
-
-現在、このプロジェクトは空の状態です。Challenge 1 の課題に取り組むことで、必要なアセットやスクリプトを追加していきます。
 
 ## 学習リソース
 
@@ -98,13 +116,18 @@ ProjectSettings/
 ### 完了したステップ
 - ✅ プロジェクトの初期セットアップ
 - ✅ Input System パッケージのインストール (v1.17.0)
-- ✅ 空のプロジェクトを準備
+- ✅ Challenge 1: Setting up the Input System
+  - ✅ Input Actions Asset の作成
+  - ✅ CarSwitcher スクリプトの実装
+  - ✅ 車両切り替え機能の動作確認
+- ✅ Challenge 2: Configure the Wheel Drive Component's Handbrake Input
+  - ✅ Handbrake アクションの追加
+  - ✅ WheelDrive.cs への Input System 統合
+  - ✅ Input ライフサイクル管理の実装
+  - ✅ 各車両への Input Actions 割り当て
 
 ### 次のステップ
-- ⬜ Challenge 1 の課題に取り組む
-- ⬜ Input Actions Asset を作成
-- ⬜ PlayerInput コンポーネントを設定
-- ⬜ Input System を使用したスクリプトを実装
+- ⬜ Challenge 3 以降のコースに進む
 
 ## ライセンス
 

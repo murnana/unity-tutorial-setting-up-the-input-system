@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
 
 [Serializable]
 public enum DriveType
@@ -34,6 +35,29 @@ public class WheelDrive : MonoBehaviour
 
     float handBrake, angle, torque;
 
+    [SerializeField] private InputActionAsset primaryActions;
+    private InputActionMap gameplayActionsMap;
+    private InputAction handBrakeInputAction;
+
+    private void Awake()
+    {
+        gameplayActionsMap = primaryActions.FindActionMap("Gameplay");
+
+        handBrakeInputAction = gameplayActionsMap.FindAction("Handbrake");
+
+        handBrakeInputAction.performed += GetHandBrakeInput;
+        handBrakeInputAction.canceled  += GetHandBrakeInput;
+    }
+
+    private void OnEnable()
+    {
+        handBrakeInputAction.Enable();
+    }
+
+    private void OnDisable()
+    {
+        handBrakeInputAction.Disable();
+    }
 
     // Find all the WheelColliders down in the hierarchy.
     void Start()
@@ -62,7 +86,6 @@ public class WheelDrive : MonoBehaviour
 
         angle = maxAngle * Input.GetAxis("Horizontal");
         torque = maxTorque * Input.GetAxis("Vertical");
-        handBrake = Input.GetKey(KeyCode.X) ? brakeTorque : 0;
 
 
         foreach (WheelCollider wheel in m_Wheels)
@@ -108,5 +131,10 @@ public class WheelDrive : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void GetHandBrakeInput(InputAction.CallbackContext context)
+    {
+        handBrake = context.ReadValue<float>() * brakeTorque;
     }
 }
