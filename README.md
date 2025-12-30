@@ -1,34 +1,33 @@
 # Unity チュートリアル: Input System のセットアップ
 
-このプロジェクトは、Unity Learn の公式コース「[Using the Input System in Unity](https://learn.unity.com/course/using-the-input-system-in-unity)」で学んだ内容を、**Roll-a-Ball** ゲームに適用するための実践プロジェクトです。
+このプロジェクトは、Unity Learn の公式コース「[Using the Input System in Unity](https://learn.unity.com/course/using-the-input-system-in-unity)」の **Challenge 1: Setting up the Input System** を実践するための学習プロジェクトです。
 
 ## プロジェクト概要
 
-**Roll-a-Ball** は、プレイヤーがボールを転がして、フィールド上のアイテムを収集する3Dゲームです。このプロジェクトでは、Unity Learn コースで学習する Input System の概念を実際のゲームに実装し、従来の Input Manager API から新しい Input System への移行方法を習得できます。
+このプロジェクトは、Unity の新しい Input System パッケージの使い方を学ぶための空のプロジェクトです。Unity Learn の Challenge 1 に従って、Input System のセットアップ方法と基本的な使い方を習得できます。
 
-### ベースプロジェクトについて
+### 現在の状態
 
-このプロジェクトは、Unity Technologies が提供する公式チュートリアルアセットをベースにしています：
+- **プロジェクト状態**: 空のプロジェクト（Challenge 1 用にリセット済み）
+- **Input System パッケージ**: v1.17.0 インストール済み
+- **学習目標**: Challenge 1 の課題に取り組み、Input System の基本を理解する
 
-- **アセット名**: Unity Learn | 3D Beginner: Roll-a-Ball | Complete Project | URP
-- **提供元**: Unity Technologies
-- **Asset Store URL**: https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-learn-3d-beginner-roll-a-ball-complete-project-urp-77198
-- **バージョン**: 4.0 (2024年8月7日リリース)
-- **ライセンス**: 無料（Unity Asset Store 標準EULA）
-- **対応Unity**: 6000.0.0f1, 2022.3.0f1, 2021.3.11f1
+### Unity Learn Challenge について
 
-このアセットは、Unity の3D ゲーム開発の基礎を学ぶための初心者向けチュートリアルプロジェクトとして設計されています。
-
-### Unity Learn コースについて
-
-- **コース名**: Using the Input System in Unity
+- **Challenge 名**: Challenge 1: Setting up the Input System
+- **コース**: Using the Input System in Unity
 - **難易度**: 初心者向け (Beginner)
-- **所要時間**: 約3時間25分
-- **URL**: https://learn.unity.com/course/using-the-input-system-in-unity
+- **Challenge URL**: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+- **コース全体URL**: https://learn.unity.com/course/using-the-input-system-in-unity
 
 ## セットアップ手順
 
-### 1. プロジェクトを開く
+### 1. 必要な環境
+
+- **Unity バージョン**: 6000.3.2f1 (Unity 6)
+- **Unity Hub**: 最新版を推奨
+
+### 2. プロジェクトを開く
 
 ```bash
 # Unity Hub からプロジェクトを開く
@@ -37,82 +36,88 @@
 
 または、Unity Hub の「開く」ボタンからこのプロジェクトフォルダを選択してください。
 
-### 2. 依存パッケージの確認
+### 3. 依存パッケージの確認
 
 プロジェクトを開くと、必要なパッケージが自動的にインポートされます：
 
-- Input System (1.17.0)
-- Universal Render Pipeline (17.3.0)
-- Visual Scripting (1.9.9)
-- Test Framework (1.6.0)
+- **Input System** (1.17.0) - メインの学習対象パッケージ
+- **Universal Render Pipeline** (17.3.0) - レンダリングパイプライン
+- **Visual Scripting** (1.9.9) - ビジュアルスクリプティングツール
+- **Test Framework** (1.6.0) - テストフレームワーク
 
-## ゲームの実行方法
+## Challenge 1 の進め方
 
-1. Unity エディタでプロジェクトを開く
-2. メインシーン `Assets/UnityTechnologies/RollABall/Roll-a-ball.unity` を開く
-3. エディタ上部の **Play** ボタンをクリック (または `Ctrl+P` / `Cmd+P`)
+### 学習の流れ
 
-### 操作方法
+1. **Unity Learn の Challenge 1 ページにアクセス**
+   - URL: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
 
-- **移動:** WASD キーまたは方向キー
-- **目標:** 12個のアイテムをすべて収集すると勝利
+2. **Challenge の指示に従って実装**
+   - Input System のセットアップ
+   - Input Actions の作成
+   - スクリプトでの使用方法
 
-## オンラインでプレイ
+3. **このプロジェクトで実践**
+   - 空のシーンから開始
+   - Challenge の要件を満たす実装を追加
 
-このゲームは Unity Play で公開されており、ブラウザから直接プレイできます：
+### 主な学習内容
 
-https://play.unity.com/en/games/6ecfeebd-ced4-459c-ac34-d9e83ada7c8e/tutorial-input-system
-
-Unity エディタをインストールせずに、ゲームの動作を確認できます。
+- Input System パッケージのセットアップ
+- Input Actions Asset の作成と設定
+- PlayerInput コンポーネントの使用
+- Input System Scripting API の基礎
 
 ## プロジェクト構成
 
 ```
-Assets/UnityTechnologies/RollABall/
-├── Scripts/              # ゲームロジック (C#)
-│   ├── PlayerController.cs    # プレイヤーの移動とアイテム収集
-│   ├── CameraController.cs    # カメラの追従
-│   └── Rotator.cs             # アイテムの回転アニメーション
-├── Prefabs/              # 再利用可能なゲームオブジェクト
-│   └── Pick Up.prefab         # 収集アイテムのプレハブ
-├── Materials/            # マテリアル
-├── URP/                  # レンダーパイプライン設定
-└── Roll-a-ball.unity     # メインシーン
+Assets/
+├── DefaultVolumeProfile.asset           # デフォルトのボリューム設定
+├── UniversalRenderPipelineGlobalSettings.asset  # URP グローバル設定
+└── (Challenge 1 で作成するアセットがここに追加されます)
+
+ProjectSettings/
+└── (Unity プロジェクト設定ファイル群)
 ```
+
+現在、このプロジェクトは空の状態です。Challenge 1 の課題に取り組むことで、必要なアセットやスクリプトを追加していきます。
 
 ## 学習リソース
 
 ### 公式リソース
-- [Unity Learn: Using the Input System in Unity（このプロジェクトのベースコース）](https://learn.unity.com/course/using-the-input-system-in-unity)
+- [Unity Learn: Challenge 1 - Setting up the Input System](https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system)
+- [Unity Learn: Using the Input System in Unity（コース全体）](https://learn.unity.com/course/using-the-input-system-in-unity)
 - [Unity 公式 Input System ドキュメント](https://docs.unity3d.com/Packages/com.unity.inputsystem@1.17/manual/index.html)
-- [Roll-a-Ball チュートリアル](https://learn.unity.com/project/roll-a-ball)
 
 ### 追加リソース
 - [Input System パッケージ GitHub](https://github.com/Unity-Technologies/InputSystem)
 - [Input System フォーラム](https://forum.unity.com/forums/input-system.103/)
 
-## ライセンスとクレジット
+## プロジェクトの進行状況
 
-このプロジェクトは、Unity Technologies が提供する以下の公式リソースをベースにしています：
+### 完了したステップ
+- ✅ プロジェクトの初期セットアップ
+- ✅ Input System パッケージのインストール (v1.17.0)
+- ✅ 空のプロジェクトを準備
 
-### ベースアセット
-- **Unity Learn | 3D Beginner: Roll-a-Ball | Complete Project | URP**
-- Unity Asset Store で無料配布
-- URL: https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-learn-3d-beginner-roll-a-ball-complete-project-urp-77198
-- ライセンス: Unity Asset Store EULA に準拠
+### 次のステップ
+- ⬜ Challenge 1 の課題に取り組む
+- ⬜ Input Actions Asset を作成
+- ⬜ PlayerInput コンポーネントを設定
+- ⬜ Input System を使用したスクリプトを実装
+
+## ライセンス
+
+このプロジェクトは学習目的で作成されています。
 
 ### 学習コース
 - **Using the Input System in Unity**
 - Unity Learn で無料公開
 - URL: https://learn.unity.com/course/using-the-input-system-in-unity
-
-### クレジット
-- オリジナルプロジェクト: Unity Technologies
-- チュートリアルコース: Unity Technologies
-- このリポジトリ: 学習・実践目的のための改変版
+- 提供元: Unity Technologies
 
 ## 貢献とフィードバック
 
 質問や改善提案がある場合は、Issue を作成してください。
 
-このプロジェクトは学習目的で作成されています。Unity Technologies の公式リソースを尊重し、適切に利用してください。
+このプロジェクトは学習目的で作成されています。

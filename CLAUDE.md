@@ -4,32 +4,30 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a Unity tutorial project that serves as a practical companion to the Unity Learn course **"Using the Input System in Unity"** (https://learn.unity.com/course/using-the-input-system-in-unity). The project applies Input System concepts taught in the course to the classic **Roll-a-Ball** game sample.
-
-**Base Asset:**
-- This project is based on the official Unity Asset Store package: **"Unity Learn | 3D Beginner: Roll-a-Ball | Complete Project | URP"**
-- Asset Store URL: https://assetstore.unity.com/packages/essentials/tutorial-projects/unity-learn-3d-beginner-roll-a-ball-complete-project-urp-77198
-- Version 4.0 (Released August 7, 2024)
-- Publisher: Unity Technologies
-- License: Free under Unity Asset Store EULA
+This is a Unity tutorial project for practicing **Challenge 1: Setting up the Input System** from the Unity Learn course **"Using the Input System in Unity"** (https://learn.unity.com/course/using-the-input-system-in-unity).
 
 **Current State:**
-- The project uses **legacy Input Manager API** (`Input.GetAxis()`)
-- Modern **Input System package** (v1.17.0) is installed but not yet integrated
-- The goal is to migrate from legacy input to the new Input System following the Unity Learn course methodology
+- **Project Status:** Clean/empty project, reset for Challenge 1
+- **Input System package:** v1.17.0 installed
+- **Assets:** Only URP default assets (DefaultVolumeProfile, UniversalRenderPipelineGlobalSettings)
+- **Previous Content:** All Roll-a-Ball tutorial assets and sample files have been removed
+- **Goal:** Complete Challenge 1 by setting up Input System and converting a car switcher component
 
 **Project Details:**
 - **Unity Version:** 6000.3.2f1 (Unity 6)
 - **Render Pipeline:** Universal Render Pipeline (URP) 17.3.0
-- **Main Scene:** `Assets/UnityTechnologies/RollABall/Roll-a-ball.unity`
-- **Unity Learn Course:** Using the Input System in Unity (Beginner level, ~3.5 hours)
+- **Main Scene:** None (will be created as part of Challenge 1)
+- **Unity Learn Challenge:** Challenge 1 - Setting up the Input System
 
-**Learning Objectives from Unity Learn Course:**
-1. Setting up the Input System package
-2. Scripting player movement with Input Actions
-3. Customizing Input Actions for keyboard and gamepad
-4. Using the Input System Scripting API
-5. Debugging and testing with Input Debugger
+**Challenge 1 URL:**
+https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
+
+**Learning Objectives for Challenge 1:**
+1. Setting up the Input System package in a project
+2. Creating Input Actions Assets
+3. Using the PlayerInput component
+4. Converting existing input code to use Input System
+5. Understanding Input System basics
 
 ## Development Commands
 
@@ -39,184 +37,180 @@ This is a Unity tutorial project that serves as a practical companion to the Uni
 # File → Open Project → Select this directory
 ```
 
-### Running the Game
-- Press the Play button in Unity Editor, or use `Ctrl+P` (Windows) / `Cmd+P` (Mac)
-- Test with keyboard: WASD or Arrow keys for movement
+### Working on Challenge 1
+- Follow the Challenge 1 instructions on Unity Learn
+- Create new scenes, scripts, and Input Actions as required
+- Test your implementation in Play mode
 
 ### Building
 No build scripts configured. Use Unity Editor's build menu: File → Build Settings
 
-## Code Architecture
-
-### Project Structure
+## Current Project Structure
 
 ```
-Assets/UnityTechnologies/RollABall/
-├── Scripts/              # All C# game logic
-├── Prefabs/              # Reusable game objects (Pick Up items)
-├── Materials/            # Visual materials for objects
-├── URP/                  # Render pipeline configuration
-└── Roll-a-ball.unity     # Main game scene
+Assets/
+├── DefaultVolumeProfile.asset                      # Default URP volume settings
+├── UniversalRenderPipelineGlobalSettings.asset     # URP global configuration
+└── (Challenge 1 assets will be added here)
+
+ProjectSettings/
+└── (Unity project configuration files)
 ```
 
-### Core Scripts
+**Note:** The project is currently empty. All assets, scripts, and scenes will be created as part of Challenge 1.
 
-**PlayerController.cs** (Assets/UnityTechnologies/RollABall/Scripts/PlayerController.cs:8)
-- Main player movement and game logic
-- Currently uses **legacy Input.GetAxis()** API (lines 39-40)
-- Handles physics-based movement via Rigidbody.AddForce()
-- Manages pickup collection and win condition (12 pickups required)
-- Controls UI updates for score and win text
+## Challenge 1 Implementation Guide
 
-**CameraController.cs** (Assets/UnityTechnologies/RollABall/Scripts/CameraController.cs:4)
-- Simple third-person camera follow system
-- Maintains fixed offset from player position
-- Updates in LateUpdate() to avoid jitter
+### Expected Deliverables for Challenge 1
 
-**Rotator.cs** (Assets/UnityTechnologies/RollABall/Scripts/Rotator.cs:4)
-- Continuously rotates pickup objects for visual effect
-- Applied to Pick Up prefab instances
+Based on the Unity Learn Challenge 1, you should create:
 
-### Input System Architecture
+1. **Input Actions Asset**
+   - Create a `.inputactions` file for the car switcher
+   - Define appropriate Action Maps and Actions
+   - Configure bindings for the required inputs
 
-**Current State:**
-- Scripts use **legacy Input Manager** API: `Input.GetAxis("Horizontal")` and `Input.GetAxis("Vertical")`
-- Input axes defined in `ProjectSettings/InputManager.asset`
-- Modern **Input System package** (com.unity.inputsystem@1.17.0) is installed but not yet used
+2. **Scene Setup**
+   - Create or import the Challenge 1 starter scene
+   - Set up game objects as required by the challenge
 
-**Migration Path (Following Unity Learn Course):**
+3. **Scripts**
+   - Convert the car switcher component to use Input System
+   - Use either PlayerInput component or direct Input Actions API
 
-When implementing Input System based on the Unity Learn course methodology:
+4. **Testing**
+   - Verify input works correctly
+   - Use Input Debugger to validate setup
 
-1. **Setup Phase (Course Lesson 1):**
-   - Verify Input System package is installed
-   - Enable "Both" input backends in Project Settings (Edit → Project Settings → Player → Active Input Handling)
-   - Or switch to "Input System Package (New)" for full migration
+### Input System Implementation Approaches
 
-2. **Create Input Actions Asset (Course Lesson 2-3):**
-   - Create `.inputactions` file: Right-click in Project → Create → Input Actions
-   - Define Action Map (e.g., "Player")
-   - Add Move action as Value → Vector2
-   - Add bindings for WASD, Arrow Keys, and Gamepad Left Stick
+**Option A - PlayerInput Component (Recommended for Challenge 1):**
+```csharp
+using UnityEngine.InputSystem;
 
-3. **Update PlayerController.cs (Course Lesson 2, 4):**
+public class CarSwitcher : MonoBehaviour
+{
+    public void OnSwitchCar(InputValue value)
+    {
+        // Handle car switching logic
+    }
+}
+```
 
-   **Option A - PlayerInput Component (Recommended for beginners):**
-   ```csharp
-   using UnityEngine.InputSystem;
+**Option B - Direct Input Actions API:**
+```csharp
+using UnityEngine.InputSystem;
 
-   private Vector2 moveInput;
+public class CarSwitcher : MonoBehaviour
+{
+    [SerializeField] private InputActionAsset inputActions;
+    private InputAction switchAction;
 
-   public void OnMove(InputValue value) {
-       moveInput = value.Get<Vector2>();
-   }
-   ```
+    void Awake()
+    {
+        switchAction = inputActions.FindActionMap("Player").FindAction("SwitchCar");
+    }
 
-   **Option B - Direct Input Actions API:**
-   ```csharp
-   using UnityEngine.InputSystem;
+    void OnEnable() => switchAction.Enable();
+    void OnDisable() => switchAction.Disable();
 
-   [SerializeField] private InputActionAsset playerControls;
-   private InputAction moveAction;
+    void Update()
+    {
+        if (switchAction.triggered)
+        {
+            // Handle car switching logic
+        }
+    }
+}
+```
 
-   void Awake() {
-       moveAction = playerControls.FindActionMap("Player").FindAction("Move");
-   }
+### Input System Key Concepts
 
-   void OnEnable() => moveAction.Enable();
-   void OnDisable() => moveAction.Disable();
-
-   void FixedUpdate() {
-       Vector2 moveInput = moveAction.ReadValue<Vector2>();
-       // Use moveInput instead of Input.GetAxis()
-   }
-   ```
-
-4. **Testing and Debugging (Course Lesson 5):**
-   - Use Window → Analysis → Input Debugger
-   - Verify input bindings work for both keyboard and gamepad
-   - Check for input response in play mode
-
-**Key Concepts from Unity Learn Course:**
 - **Action Maps**: Organizational containers for related actions (e.g., "Player", "UI")
-- **Actions**: Individual inputs (e.g., "Move", "Jump", "Fire")
-- **Bindings**: Specific device inputs mapped to actions (e.g., WASD → Move)
+- **Actions**: Individual inputs (e.g., "Move", "SwitchCar", "Jump")
+- **Bindings**: Specific device inputs mapped to actions (e.g., Tab key → SwitchCar)
 - **Control Schemes**: Device-specific configurations (Keyboard+Mouse, Gamepad)
+- **PlayerInput Component**: Unity component that bridges Input Actions and MonoBehaviour scripts
 
 ## Key Dependencies
 
 Critical packages in `Packages/manifest.json`:
-- `com.unity.inputsystem@1.17.0` - New Input System (target for migration)
+- `com.unity.inputsystem@1.17.0` - New Input System (main learning focus)
 - `com.unity.render-pipelines.universal@17.3.0` - URP rendering
 - `com.unity.test-framework@1.6.0` - Unit testing support
-- `com.unity.visualscripting@1.9.9` - Visual scripting (alternative to C# scripts)
-
-## Scene Configuration
-
-The main scene (`Roll-a-ball.unity`) contains:
-- Player GameObject with PlayerController script and Rigidbody
-- Camera GameObject with CameraController script
-- Multiple Pick Up GameObjects (instances of Pick Up prefab with Rotator script)
-- UI Canvas with score counter and win text
-- Lighting and environment setup
-
-## Development Patterns
-
-### Physics Movement
-Movement is handled in `FixedUpdate()` using `Rigidbody.AddForce()` rather than direct transform manipulation, ensuring consistent physics simulation.
-
-### Collision Detection
-Pickup collection uses `OnTriggerEnter()` with colliders marked as "Is Trigger" and tagged with "Pick Up".
-
-### UI Updates
-UI text elements are updated through public references set in the Unity Inspector, using `UnityEngine.UI.Text` components.
+- `com.unity.visualscripting@1.9.9` - Visual scripting
 
 ## Working with This Project
 
-### When Helping with Input System Migration
+### When Helping with Challenge 1
 
-If asked to migrate from legacy Input Manager to Input System:
+If asked to help with Challenge 1 implementation:
 
-1. **Follow the Unity Learn Course Structure:**
-   - Reference the 5 main lessons when explaining or implementing
+1. **Follow the Unity Learn Challenge Instructions:**
+   - Reference the Challenge 1 page for specific requirements
    - Use terminology from the course (Action Maps, Actions, Bindings, Control Schemes)
    - Recommend PlayerInput component approach for beginners
 
-2. **Preserve Existing Functionality:**
-   - The current implementation uses `Input.GetAxis("Horizontal")` and `Input.GetAxis("Vertical")` in PlayerController.cs:39-40
-   - Maintain the same movement behavior (physics-based via AddForce)
-   - Keep the same feel and responsiveness
+2. **Project Setup:**
+   - The project is currently empty (no scenes, scripts, or Input Actions)
+   - Input System package v1.17.0 is already installed
+   - URP is configured and ready to use
 
-3. **Testing Requirements:**
-   - Verify WASD and Arrow Keys work identically to legacy input
-   - Test gamepad support (Left Stick for movement)
-   - Ensure UI updates still function correctly
-   - Confirm all 12 pickups can be collected and win condition triggers
+3. **Implementation Steps:**
+   - Create Input Actions Asset first
+   - Set up the scene with required GameObjects
+   - Write or convert scripts to use Input System
+   - Test using Input Debugger
 
-4. **Code Style:**
-   - Match the existing code style (explicit type declarations, clear variable names)
-   - Add comments similar to the existing ones (beginner-friendly explanations)
-   - Keep the tutorial nature of the code intact
+4. **Code Style Guidelines:**
+   - Use clear, beginner-friendly variable names
+   - Add comments to explain Input System concepts
+   - Keep code simple and tutorial-focused
+   - Follow Unity's C# coding conventions
 
-### Common Tasks
+### Common Tasks for Challenge 1
 
 **Creating Input Actions Asset:**
-- Place in `Assets/UnityTechnologies/RollABall/` directory
-- Name it "PlayerInputActions.inputactions" for clarity
-- Generate C# class for strongly-typed access if using scripting API
+- Right-click in Project window → Create → Input Actions
+- Name it appropriately (e.g., "CarSwitcherInputActions.inputactions")
+- Define Action Maps, Actions, and Bindings as required by the challenge
+- Save the asset and optionally generate a C# class
 
-**Updating PlayerController.cs:**
+**Setting Up PlayerInput Component:**
+- Add PlayerInput component to the appropriate GameObject
+- Assign the Input Actions Asset
+- Set Behavior to "Invoke Unity Events" or "Send Messages"
+- Configure Default Action Map
+
+**Writing Input System Scripts:**
 - Add `using UnityEngine.InputSystem;` at the top
-- Replace lines 39-40 (the Input.GetAxis calls) with Input System equivalent
-- Keep the rest of the FixedUpdate logic unchanged
-- Maintain the existing public variables for Inspector configuration
+- Implement callback methods (e.g., `OnSwitchCar(InputValue value)`)
+- Handle input values appropriately
+- Add beginner-friendly comments
 
-**Debugging Issues:**
-- Check Input System package version matches (1.17.0)
-- Verify Project Settings → Player → Active Input Handling is set appropriately
-- Use Input Debugger: Window → Analysis → Input Debugger
-- Check Console for Input System-specific warnings or errors
+**Debugging and Testing:**
+- Use Window → Analysis → Input Debugger to inspect inputs
+- Verify bindings are triggering correctly
+- Test with keyboard (and gamepad if available)
+- Check Console for any Input System warnings or errors
+
+### Project Settings for Input System
+
+**Active Input Handling:**
+- Location: Edit → Project Settings → Player → Other Settings → Active Input Handling
+- Options:
+  - "Input Manager (Old)" - Legacy only
+  - "Input System Package (New)" - New system only (recommended for Challenge 1)
+  - "Both" - Supports both systems (useful for gradual migration)
 
 ### Reference Documentation
+- Unity Learn Challenge 1: https://learn.unity.com/course/using-the-input-system-in-unity/tutorial/challenge-1-setup-the-input-system-and-convert-the-car-switcher-s-component-to-use-the-new-input-system
 - Unity Learn Course: https://learn.unity.com/course/using-the-input-system-in-unity
 - Input System Package Manual: https://docs.unity3d.com/Packages/com.unity.inputsystem@1.17/manual/index.html
+
+### Notes
+
+- This project has been reset to a clean state for Challenge 1
+- Previous Roll-a-Ball tutorial assets have been removed
+- Focus is on learning Input System fundamentals through the Challenge 1 exercise
+- After completing Challenge 1, you can proceed to Challenge 2 and beyond in the Unity Learn course
