@@ -37,7 +37,7 @@ GraphicsSettings:
   m_PreloadedShaders: []
   m_PreloadShadersBatchTimeLimit: -1
   m_SpritesDefaultMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_CustomRenderPipeline: {fileID: 11400000, guid: 96097bd0230221448a14983771c0db6a, type: 2}
+  m_CustomRenderPipeline: {fileID: 11400000, guid: c110bea417b9cce4b9f51525553bcdf3, type: 2}
   m_TransparencySortMode: 0
   m_TransparencySortAxis: {x: 0, y: 0, z: 1}
   m_DefaultRenderingPath: 1
@@ -48,17 +48,17 @@ GraphicsSettings:
   m_InstancingStripping: 1
   m_BrgStripping: 1
   m_LightmapKeepPlain: 0
-  m_LightmapKeepDirCombined: 0
+  m_LightmapKeepDirCombined: 1
   m_LightmapKeepDynamicPlain: 0
   m_LightmapKeepDynamicDirCombined: 0
-  m_LightmapKeepShadowMask: 0
+  m_LightmapKeepShadowMask: 1
   m_LightmapKeepSubtractive: 0
   m_FogKeepLinear: 0
-  m_FogKeepExp: 0
+  m_FogKeepExp: 1
   m_FogKeepExp2: 0
   m_AlbedoSwatchInfos: []
   m_RenderPipelineGlobalSettingsMap:
-    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: ed0a93fc67b2b3246a860e0805129c32, type: 2}
+    UnityEngine.Rendering.Universal.UniversalRenderPipeline: {fileID: 11400000, guid: ba9398b56a4f6f844b867039d021ea40, type: 2}
   m_ShaderBuildSettings:
     keywordDeclarationOverrides: []
   m_LightsUseLinearIntensity: 0
